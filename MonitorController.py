@@ -1,4 +1,6 @@
 from SNMPdata import MonitorInfo
+import ReportManager
+import createRRD
 import os
 
 class Menu:
@@ -11,6 +13,9 @@ class Menu:
 		self.state = 0
 		self.observingHost = None
 		self.changes = False
+
+		self.deletions = []
+		self.news = []
 		while 1:
 			os.system('clear')
 			print('Control del monitoreo')
@@ -20,6 +25,10 @@ class Menu:
 			print(f'{len(self.monitor.hosts)} hosts monitoreados')
 			if self.changes:
 				print('*Cambios sin guardar*')
+			if len(self.deletions) > 0:
+				print(f'*Se borraran datos de {len(self.deletions)} hosts*')
+			if len(self.news) > 0:
+				print(f'*Se crearan datos para {len(self.news)} hosts*')
 
 			if self.state == 0:
 				self.menuPrincipal()
@@ -51,14 +60,15 @@ class Menu:
 		elif opt == '4':
 			self.state = 1
 		elif opt == '5':
-			self.monitor.saveFile(self.file)
-			self.changes = False
+			self.saveChanges()
 		elif opt == '6':
 			if os.path.exists(self.file):
 				self.monitor.readFile(self.file)
 			else:
 				self.monitor = MonitorInfo()
 			self.changes = False
+			self.deletions = []
+			self.news = []
 		elif opt == 'q':
 			exit()
 
@@ -77,12 +87,13 @@ class Menu:
 		if opt == str(1 + len(self.monitor.hosts)):
 			newHost = input('Ingrese la ip del nuevo host: ')
 			self.monitor.addHost(newHost)
+			self.news.append(newHost)
 			self.changes = True
 		elif opt == str(2 + len(self.monitor.hosts)):
 			self.state = 0
 		else:
 			self.observingHost = self.monitor.hosts[int(opt)-1]
-			self.state = 3
+			self.state = 2
 			
 
 	def menuHost(self):
@@ -94,11 +105,50 @@ class Menu:
 			confirm = input('Seguro que desea eliminar este host? (y/n):')
 			if confirm == 'y':
 				self.monitor.removeHost(self.observingHost)
+				self.deletions.append(self.observingHost)
 				self.observingHost = None
-				self.state = 2
+				self.state = 1
 				self.changes = True
 		elif opt == '2':
+			self.makeReport()
 			self.observingHost = None
-			self.state = 2
-		
+			self.state = 1
+	
+	def saveChanges(self):
+		self.monitor.saveFile(self.file)
+
+		if self.deletions != []:
+			for host in self.deletions:
+				if os.path.exists(f'rrd/{host}.rrd'):
+					os.remove(f'rrd/{host}.rrd')
+				if os.path.exists(f'rrd/{host}.xml'):
+					os.remove(f'rrd/{host}.xml')
+				if os.path.exists(f'rrd/{host} inunicast.png'):
+					os.remove(f'rrd/{host} inunicast.png')
+				if os.path.exists(f'rrd/{host} inip.png'):
+					os.remove(f'rrd/{host} inip.png')
+				if os.path.exists(f'rrd/{host} icmpecho.png'):
+					os.remove(f'rrd/{host} icmpecho.png')
+				if os.path.exists(f'rrd/{host} tcpsegsin.png'):
+					os.remove(f'rrd/{host} tcpsegsin.png')
+				if os.path.exists(f'rrd/{host} udpindtgr.png'):
+					os.remove(f'rrd/{host} udpindtgr.png')
+				if os.path.exists(f'rrd/{host} report.pdf'):
+					os.remove(f'rrd/{host} report.pdf')
+
+		if self.news != []:
+			for host in self.news:
+				createRRD.create(host)
+
+		self.changes = False
+		self.deletions = []
+		self.news = []
+
+	def makeReport(self):
+		createRRD.graph(self.observingHost, 'inunicast', 'Paquetes unicast recibidos', 'Paquetes')
+		createRRD.graph(self.observingHost, 'inip', 'Paquetes IPV4 recibidos', 'Paquetes')
+		createRRD.graph(self.observingHost, 'icmpecho', 'Mensajes ICMP echo enviados', 'Mensajes')
+		createRRD.graph(self.observingHost, 'tcpsegsin', 'Segmentos TCP recibidos', 'Segmentos')
+		createRRD.graph(self.observingHost, 'udpindtgr', 'Datagramas UDP entregados', 'Datagramas')
+		ReportManager.makeReport(self.monitor, self.observingHost)
 Menu()

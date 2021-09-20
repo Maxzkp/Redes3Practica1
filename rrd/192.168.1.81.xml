@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rrd SYSTEM "https://oss.oetiker.ch/rrdtool/rrdtool.dtd">
+<!-- Round Robin Database Dump -->
+<rrd>
+	<version>0003</version>
+	<step>60</step> <!-- Seconds -->
+	<lastupdate>1632099182</lastupdate> <!-- 2021-09-19 19:53:02 CDT -->
+
+	<ds>
+		<name> inunicast </name>
+		<type> COUNTER </type>
+		<minimal_heartbeat>600</minimal_heartbeat>
+		<min>NaN</min>
+		<max>NaN</max>
+
+		<!-- PDP Status -->
+		<last_ds>1602</last_ds>
+		<value>0.0000000000e+00</value>
+		<unknown_sec> 0 </unknown_sec>
+	</ds>
+
+	<ds>
+		<name> inip </name>
+		<type> COUNTER </type>
+		<minimal_heartbeat>600</minimal_heartbeat>
+		<min>NaN</min>
+		<max>NaN</max>
+
+		<!-- PDP Status -->
+		<last_ds>40907</last_ds>
+		<value>1.5590186621e+01</value>
+		<unknown_sec> 0 </unknown_sec>
+	</ds>
+
+	<ds>
+		<name> icmpecho </name>
+		<type> COUNTER </type>
+		<minimal_heartbeat>600</minimal_heartbeat>
+		<min>NaN</min>
+		<max>NaN</max>
+
+		<!-- PDP Status -->
+		<last_ds>15328</last_ds>
+		<value>1.0393457747e+01</value>
+		<unknown_sec> 0 </unknown_sec>
+	</ds>
+
+	<ds>
+		<name> tcpsegsin </name>
+		<type> COUNTER </type>
+		<minimal_heartbeat>600</minimal_heartbeat>
+		<min>NaN</min>
+		<max>NaN</max>
+
+		<!-- PDP Status -->
+		<last_ds>19055</last_ds>
+		<value>0.0000000000e+00</value>
+		<unknown_sec> 0 </unknown_sec>
+	</ds>
+
+	<ds>
+		<name> udpindtgr </name>
+		<type> COUNTER </type>
+		<minimal_heartbeat>600</minimal_heartbeat>
+		<min>NaN</min>
+		<max>NaN</max>
+
+		<!-- PDP Status -->
+		<last_ds>19267</last_ds>
+		<value>6.4959110919e+00</value>
+		<unknown_sec> 0 </unknown_sec>
+	</ds>
+
+	<!-- Round Robin Archives -->
+	<rra>
+		<cf>AVERAGE</cf>
+		<pdp_per_row>6</pdp_per_row> <!-- 360 seconds -->
+
+		<params>
+		<xff>5.0000000000e-01</xff>
+		</params>
+		<cdp_prep>
+			<ds>
+			<primary_value>5.6781666438e-02</primary_value>
+			<secondary_value>8.2219787865e-02</secondary_value>
+			<value>3.5931000137e-01</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+			<ds>
+			<primary_value>1.8493029728e+00</primary_value>
+			<secondary_value>1.2039326080e+00</secondary_value>
+			<value>1.1011012386e+01</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+			<ds>
+			<primary_value>1.9627599945e+00</primary_value>
+			<secondary_value>1.9732749088e+00</secondary_value>
+			<value>9.7168824038e+00</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+			<ds>
+			<primary_value>7.9132539356e-02</primary_value>
+			<secondary_value>1.1745683981e-01</secondary_value>
+			<value>5.4187143053e-01</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+			<ds>
+			<primary_value>7.6700339242e-01</primary_value>
+			<secondary_value>1.5563031274e-01</secondary_value>
+			<value>5.6730477939e+00</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+		</cdp_prep>
+		<database>
+			<!-- 2021-09-19 19:24:00 CDT / 1632097440 --> <row><v>1.8333333333e-01</v><v>3.0824517810e+00</v><v>1.9473964465e+00</v><v>3.2296022273e-01</v><v>1.8941266684e+00</v></row>
+			<!-- 2021-09-19 19:30:00 CDT / 1632097800 --> <row><v>1.3888888889e-02</v><v>2.8113287621e+00</v><v>1.9645532179e+00</v><v>9.3706443939e-02</v><v>1.6862017557e+00</v></row>
+			<!-- 2021-09-19 19:36:00 CDT / 1632098160 --> <row><v>1.1111111111e-02</v><v>2.5859575998e+00</v><v>1.9478175737e+00</v><v>2.2222222222e-02</v><v>1.5667483220e+00</v></row>
+			<!-- 2021-09-19 19:42:00 CDT / 1632098520 --> <row><v>2.7777777778e-02</v><v>2.6674840794e+00</v><v>1.9457883175e+00</v><v>8.3333333333e-02</v><v>1.5640343651e+00</v></row>
+			<!-- 2021-09-19 19:48:00 CDT / 1632098880 --> <row><v>5.6781666438e-02</v><v>1.8493029728e+00</v><v>1.9627599945e+00</v><v>7.9132539356e-02</v><v>7.6700339242e-01</v></row>
+		</database>
+	</rra>
+	<rra>
+		<cf>AVERAGE</cf>
+		<pdp_per_row>1</pdp_per_row> <!-- 60 seconds -->
+
+		<params>
+		<xff>5.0000000000e-01</xff>
+		</params>
+		<cdp_prep>
+			<ds>
+			<primary_value>0.0000000000e+00</primary_value>
+			<secondary_value>8.2219787865e-02</secondary_value>
+			<value>NaN</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+			<ds>
+			<primary_value>2.8234968897e+00</primary_value>
+			<secondary_value>1.2039326080e+00</secondary_value>
+			<value>NaN</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+			<ds>
+			<primary_value>1.9934423709e+00</primary_value>
+			<secondary_value>1.9732749088e+00</secondary_value>
+			<value>NaN</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+			<ds>
+			<primary_value>3.3333333333e-02</primary_value>
+			<secondary_value>1.1745683981e-01</secondary_value>
+			<value>NaN</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+			<ds>
+			<primary_value>1.7250681485e+00</primary_value>
+			<secondary_value>1.5563031274e-01</secondary_value>
+			<value>NaN</value>
+			<unknown_datapoints>0</unknown_datapoints>
+			</ds>
+		</cdp_prep>
+		<database>
+			<!-- 2021-09-19 19:24:00 CDT / 1632097440 --> <row><v>6.6666666667e-02</v><v>2.9549732478e+00</v><v>1.9170756002e+00</v><v>2.0442800303e-01</v><v>1.7420074446e+00</v></row>
+			<!-- 2021-09-19 19:25:00 CDT / 1632097500 --> <row><v>0.0000000000e+00</v><v>2.7886226474e+00</v><v>1.9489546545e+00</v><v>1.6223866363e-01</v><v>1.6519066566e+00</v></row>
+			<!-- 2021-09-19 19:26:00 CDT / 1632097560 --> <row><v>0.0000000000e+00</v><v>2.8000000000e+00</v><v>2.0000000000e+00</v><v>2.6666666667e-01</v><v>1.6666666667e+00</v></row>
+			<!-- 2021-09-19 19:27:00 CDT / 1632097620 --> <row><v>0.0000000000e+00</v><v>2.7000000000e+00</v><v>1.9666666667e+00</v><v>3.3333333333e-02</v><v>1.6666666667e+00</v></row>
+			<!-- 2021-09-19 19:28:00 CDT / 1632097680 --> <row><v>1.6666666667e-02</v><v>2.8500000000e+00</v><v>1.9666666667e+00</v><v>1.0000000000e-01</v><v>1.7333333333e+00</v></row>
+			<!-- 2021-09-19 19:29:00 CDT / 1632097740 --> <row><v>6.6666666667e-02</v><v>2.7779532048e+00</v><v>1.9834649036e+00</v><v>0.0000000000e+00</v><v>1.7695540864e+00</v></row>
+			<!-- 2021-09-19 19:30:00 CDT / 1632097800 --> <row><v>0.0000000000e+00</v><v>2.9513967201e+00</v><v>1.9215664159e+00</v><v>0.0000000000e+00</v><v>1.6290831244e+00</v></row>
+			<!-- 2021-09-19 19:31:00 CDT / 1632097860 --> <row><v>0.0000000000e+00</v><v>2.6056289758e+00</v><v>1.9170361893e+00</v><v>0.0000000000e+00</v><v>1.6253079355e+00</v></row>
+			<!-- 2021-09-19 19:32:00 CDT / 1632097920 --> <row><v>0.0000000000e+00</v><v>2.7983544326e+00</v><v>1.9445991578e+00</v><v>5.0000000000e-02</v><v>1.8593881870e+00</v></row>
+			<!-- 2021-09-19 19:33:00 CDT / 1632097980 --> <row><v>0.0000000000e+00</v><v>2.7166666667e+00</v><v>1.9666666667e+00</v><v>8.3333333333e-02</v><v>1.5333333333e+00</v></row>
+			<!-- 2021-09-19 19:34:00 CDT / 1632098040 --> <row><v>6.6666666667e-02</v><v>2.5827482235e+00</v><v>1.9953945010e+00</v><v>0.0000000000e+00</v><v>1.5850509730e+00</v></row>
+			<!-- 2021-09-19 19:35:00 CDT / 1632098100 --> <row><v>0.0000000000e+00</v><v>2.4406671340e+00</v><v>1.8930003505e+00</v><v>0.0000000000e+00</v><v>1.4108336254e+00</v></row>
+			<!-- 2021-09-19 19:36:00 CDT / 1632098160 --> <row><v>0.0000000000e+00</v><v>2.3716801660e+00</v><v>1.9702085768e+00</v><v>0.0000000000e+00</v><v>1.3865758776e+00</v></row>
+			<!-- 2021-09-19 19:37:00 CDT / 1632098220 --> <row><v>1.0000000000e-01</v><v>2.8215711431e+00</v><v>1.9747299050e+00</v><v>2.5000000000e-01</v><v>1.5342061906e+00</v></row>
+			<!-- 2021-09-19 19:38:00 CDT / 1632098280 --> <row><v>0.0000000000e+00</v><v>2.6337486539e+00</v><v>1.9878114904e+00</v><v>1.3333333333e-01</v><v>1.5065095753e+00</v></row>
+			<!-- 2021-09-19 19:39:00 CDT / 1632098340 --> <row><v>6.6666666667e-02</v><v>2.5162513461e+00</v><v>1.9121885096e+00</v><v>1.6666666667e-02</v><v>1.4601570913e+00</v></row>
+			<!-- 2021-09-19 19:40:00 CDT / 1632098400 --> <row><v>0.0000000000e+00</v><v>2.8000000000e+00</v><v>2.0000000000e+00</v><v>6.6666666667e-02</v><v>1.7166666667e+00</v></row>
+			<!-- 2021-09-19 19:41:00 CDT / 1632098460 --> <row><v>0.0000000000e+00</v><v>2.6344402781e+00</v><v>1.9342188892e+00</v><v>0.0000000000e+00</v><v>1.6118490743e+00</v></row>
+			<!-- 2021-09-19 19:42:00 CDT / 1632098520 --> <row><v>0.0000000000e+00</v><v>2.5988930552e+00</v><v>1.8657811108e+00</v><v>3.3333333333e-02</v><v>1.5548175924e+00</v></row>
+			<!-- 2021-09-19 19:43:00 CDT / 1632098580 --> <row><v>0.0000000000e+00</v><v>3.0148575893e+00</v><v>2.0298827206e+00</v><v>8.3333333333e-02</v><v>1.6165828957e+00</v></row>
+			<!-- 2021-09-19 19:44:00 CDT / 1632098640 --> <row><v>6.6666666667e-02</v><v>2.5684757440e+00</v><v>1.9701172794e+00</v><v>0.0000000000e+00</v><v>1.6000837710e+00</v></row>
+			<!-- 2021-09-19 19:45:00 CDT / 1632098700 --> <row><v>2.7363968365e-02</v><v>1.9006866796e+00</v><v>1.8567352408e+00</v><v>3.9091383379e-02</v><v>9.1846274964e-01</v></row>
+			<!-- 2021-09-19 19:46:00 CDT / 1632098760 --> <row><v>8.2219787865e-02</v><v>1.2039326080e+00</v><v>1.9732749088e+00</v><v>1.1745683981e-01</v><v>1.5563031274e-01</v></row>
+			<!-- 2021-09-19 19:47:00 CDT / 1632098820 --> <row><v>8.2219787865e-02</v><v>1.2039326080e+00</v><v>1.9732749088e+00</v><v>1.1745683981e-01</v><v>1.5563031274e-01</v></row>
+			<!-- 2021-09-19 19:48:00 CDT / 1632098880 --> <row><v>8.2219787865e-02</v><v>1.2039326080e+00</v><v>1.9732749088e+00</v><v>1.1745683981e-01</v><v>1.5563031274e-01</v></row>
+			<!-- 2021-09-19 19:49:00 CDT / 1632098940 --> <row><v>8.2219787865e-02</v><v>1.2039326080e+00</v><v>1.9732749088e+00</v><v>1.1745683981e-01</v><v>1.5563031274e-01</v></row>
+			<!-- 2021-09-19 19:50:00 CDT / 1632099000 --> <row><v>8.2219787865e-02</v><v>1.2039326080e+00</v><v>1.9732749088e+00</v><v>1.1745683981e-01</v><v>1.5563031274e-01</v></row>
+			<!-- 2021-09-19 19:51:00 CDT / 1632099060 --> <row><v>2.8203758977e-02</v><v>2.2961888640e+00</v><v>1.8404450718e+00</v><v>4.0291084253e-02</v><v>1.2881468422e+00</v></row>
+			<!-- 2021-09-19 19:52:00 CDT / 1632099120 --> <row><v>1.6666666667e-01</v><v>3.4834614162e+00</v><v>1.9364451437e+00</v><v>2.3333333333e-01</v><v>2.3485721777e+00</v></row>
+			<!-- 2021-09-19 19:53:00 CDT / 1632099180 --> <row><v>0.0000000000e+00</v><v>2.8234968897e+00</v><v>1.9934423709e+00</v><v>3.3333333333e-02</v><v>1.7250681485e+00</v></row>
+		</database>
+	</rra>
+</rrd>

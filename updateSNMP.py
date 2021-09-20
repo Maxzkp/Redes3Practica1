@@ -1,5 +1,6 @@
-from time import sleep
 from SNMPdata import MonitorInfo
+from time import sleep
+import rrdtool
 import os
 
 file = 'hosts.txt'
@@ -35,5 +36,9 @@ while 1:
 
 	for host in monitor.hosts:
 		info = [monitor.snmpConsult(host, oid) for oid in OIDs]
-		print(':'.join([str(e) for e in info]))
+		info = 'N:' + ':'.join([str(e) for e in info])
+		if os.path.exists(f'rrd/{host}.rrd'):
+			rrdtool.update(f'rrd/{host}.rrd', info)
+			rrdtool.dump(f'rrd/{host}.rrd', f'rrd/{host}.xml')
+			print(info)
 	sleep(1)

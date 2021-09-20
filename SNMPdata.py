@@ -1,4 +1,5 @@
 from pysnmp.hlapi import *
+from re import match
 
 class MonitorInfo:
 	def __init__(self, SNMPv = '1', comunity = 'ZKCom', port = '161', hosts = []):
@@ -18,7 +19,7 @@ class MonitorInfo:
 			lines = f.readlines()
 			self.SNMPv, self.comunity, self.port = lines[0].split(':')
 			if len(lines) > 1:
-				self.hosts = [host.strip() for host in lines[1:]]
+				self.hosts = [host.strip() for host in lines[1:] if host.strip() != '']
 			else:
 				self.hosts = []
 
@@ -46,8 +47,20 @@ class MonitorInfo:
 	    else:
 	        for varBind in varBinds:
 	            return varBind[1]
+
+	def systemGet(self, target):
+		sysDesc = self.snmpConsult(target, '1.3.6.1.2.1.1.1.0')
+
+		if match(r'.*[Ww]indows.*', str(sysDesc)):
+			return 'Windows'
+		elif match(r'.*[Ll]inux.*', str(sysDesc)):
+			return 'Linux'
+		else:
+			return 'Desconocido'
+
 	def addHost(self, host):
 		self.hosts.append(host)
 
 	def removeHost(self, host):
 		self.hosts.remove(host)
+		print(self.hosts)	
