@@ -2,6 +2,8 @@ from SNMPdata import MonitorInfo
 import ReportManager
 import createRRD
 import os
+import time
+
 
 class Menu:
 
@@ -145,10 +147,19 @@ class Menu:
 		self.news = []
 
 	def makeReport(self):
-		createRRD.graph(self.observingHost, 'inunicast', 'Paquetes unicast recibidos', 'Paquetes')
-		createRRD.graph(self.observingHost, 'inip', 'Paquetes IPV4 recibidos', 'Paquetes')
-		createRRD.graph(self.observingHost, 'icmpecho', 'Mensajes ICMP echo enviados', 'Mensajes')
-		createRRD.graph(self.observingHost, 'tcpsegsin', 'Segmentos TCP recibidos', 'Segmentos')
-		createRRD.graph(self.observingHost, 'udpindtgr', 'Datagramas UDP entregados', 'Datagramas')
+		print('Igrese el tiempo en funcion de hace cuatos segundos desde ahora')
+		t0 = input('Tiempo inicial (Default hace 10 minutos): ')
+		if t0 == '':
+			t0 = str(int(time.time()) - 600)
+		else:
+			t0 = str(int(time.time()) - int(t0))
+		tf = input('Tiempo final (Default ahora): ')
+		if tf == '':
+			tf = 'N'
+		createRRD.graph(self.observingHost, 'inunicast', 'Paquetes unicast recibidos', 'Paquetes', t0, tf)
+		createRRD.graph(self.observingHost, 'inip', 'Paquetes IPV4 recibidos', 'Paquetes', t0, tf)
+		createRRD.graph(self.observingHost, 'icmpecho', 'Mensajes ICMP echo enviados', 'Mensajes', t0, tf)
+		createRRD.graph(self.observingHost, 'tcpsegsin', 'Segmentos TCP recibidos', 'Segmentos', t0, tf)
+		createRRD.graph(self.observingHost, 'udpindtgr', 'Datagramas UDP entregados', 'Datagramas', t0, tf)
 		ReportManager.makeReport(self.monitor, self.observingHost)
 Menu()

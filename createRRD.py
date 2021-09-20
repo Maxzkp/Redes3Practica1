@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 import sys
 import rrdtool
-import time
-tiempo_actual = int(time.time())
-#Grafica desde el tiempo actual menos diez minutos
-tiempo_inicial = tiempo_actual - 600
 
 def create(filename):
     ret = rrdtool.create(f'rrd/{filename}.rrd',
@@ -21,10 +17,10 @@ def create(filename):
     if ret:
         print (rrdtool.error())
 
-def graph(filename, var, title, descr):
+def graph(filename, var, title, descr, t0 = 'N', tf = 'N'):
     ret = rrdtool.graph(f'rrd/{filename} {var}.png',
-                     "--start",str(tiempo_inicial),
-                     "--end","N",
+                     "--start",t0,
+                     "--end",tf,
                      "--vertical-label=Bytes/s",
                      f"--title={title}",
                      f"DEF:{var}=rrd/{filename}.rrd:{var}:AVERAGE",

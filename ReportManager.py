@@ -4,14 +4,17 @@ w, h = A4
 
 def makeReport(monitor, target):
 	c = canvas.Canvas(f'rrd/{target} report.pdf')
+
 	c.drawImage(f'{monitor.systemGet(target)}.jpg', 50, h - 300, width = 500, height = 250)
 	text = c.beginText(50, h - 350)
+
 	content = str(monitor.snmpConsult(target, '1.3.6.1.2.1.1.1.0'))
 	if len(content) > 80:
 		content = [content[:80], content[80:]]
 		text.textLines('\n'.join(content))
 	else:
 		text.textLine(content)
+		
 	content = monitor.snmpConsult(target, '1.3.6.1.2.1.1.6.0')
 	text.textLines(f'\n\nLocalizacion: {content}')
 
